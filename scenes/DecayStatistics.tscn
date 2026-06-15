@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://cagg1r3y7en0n"]
+
+[ext_resource type="Script" uid="uid://da0oh6000tsax" path="res://scripts/decay_statistics.gd" id="1_necsv"]
+[ext_resource type="Script" uid="uid://c1hm2u1xd4scr" path="res://scripts/histogram.gd" id="2_76pvn"]
+
+[node name="DecayStatistics" type="Control" unique_id=49119884]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_necsv")
+
+[node name="MainLayout" type="HBoxContainer" parent="." unique_id=1736585633]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftPanel" type="VBoxContainer" parent="MainLayout" unique_id=1267269788]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MainLayout/LeftPanel" unique_id=91626227]
+layout_mode = 2
+text = "Radioactive Decay Statistics"
+
+[node name="StartButton" type="Button" parent="MainLayout/LeftPanel" unique_id=48576107]
+layout_mode = 2
+text = "Start Experiment"
+
+[node name="ResultBox" type="RichTextLabel" parent="MainLayout/LeftPanel" unique_id=410400031]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="MeanLabel" type="Label" parent="MainLayout/LeftPanel" unique_id=1613654682]
+layout_mode = 2
+text = "Mean Count:"
+
+[node name="ErrorLabel" type="Label" parent="MainLayout/LeftPanel" unique_id=1350116463]
+layout_mode = 2
+text = "Standard Error:"
+
+[node name="BackButton" type="Button" parent="MainLayout/LeftPanel" unique_id=1881798546]
+layout_mode = 2
+text = "Back to Main Menu"
+
+[node name="RightPanel" type="VBoxContainer" parent="MainLayout" unique_id=80177088]
+layout_mode = 2
+
+[node name="Histogram" type="Control" parent="MainLayout/RightPanel" unique_id=568188694]
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 2
+script = ExtResource("2_76pvn")
+
+[node name="HistogramTitle" type="Label" parent="MainLayout/RightPanel" unique_id=1214441470]
+layout_mode = 2
+text = "Histogram
+"

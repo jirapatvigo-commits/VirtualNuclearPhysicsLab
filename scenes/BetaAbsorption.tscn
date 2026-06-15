@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://b2ndmqa3td35v"]
+
+[ext_resource type="Script" uid="uid://btrvj4hdntom7" path="res://scripts/beta_absorption.gd" id="1_5q582"]
+[ext_resource type="PackedScene" uid="uid://bx1ime8hf7rin" path="res://scenes/BetaGraph.tscn" id="2_kwu1u"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_aufrn"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5q582"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kwu1u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kwu1u"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ycco1"]
+
+[node name="BetaAbsorption" type="Node3D" unique_id=1021498392]
+script = ExtResource("1_5q582")
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=166261055]
+transform = Transform3D(9.999985, 0, -0.017453283, 0, 0.2, 0, 0.017453283, 0, 9.999985, 0, 0, 0)
+mesh = SubResource("BoxMesh_aufrn")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1366340885]
+transform = Transform3D(1, 0, 0, 0, 0.90630776, 0.42261827, 0, -0.42261827, 0.90630776, 0, 4, 8)
+current = true
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=1589536499]
+transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.70710677, 0.70710677, -0.70710677, -0.49999997, 0.49999997, 0, 0, 0)
+
+[node name="Source" type="MeshInstance3D" parent="." unique_id=1249219496]
+transform = Transform3D(0.5, 0, 0, 0, 0.2, 0, 0, 0, 0.5, 0, 0.5, 2)
+mesh = SubResource("CylinderMesh_5q582")
+
+[node name="Absorber" type="MeshInstance3D" parent="." unique_id=1840789933]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_kwu1u")
+
+[node name="Detector" type="MeshInstance3D" parent="." unique_id=2082940773]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0.5, -2)
+material_override = SubResource("StandardMaterial3D_kwu1u")
+mesh = SubResource("BoxMesh_ycco1")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1089775534]
+
+[node name="ControlPanel" type="PanelContainer" parent="UI" unique_id=886683439]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/ControlPanel" unique_id=1047210809]
+layout_mode = 2
+
+[node name="EmitButton" type="Button" parent="UI/ControlPanel/VBoxContainer" unique_id=1312686142]
+layout_mode = 2
+text = "Emit Beta"
+
+[node name="ThicknessLabel" type="Label" parent="UI/ControlPanel/VBoxContainer" unique_id=1860239985]
+layout_mode = 2
+text = "Thickness : 1 mm"
+
+[node name="IncreaseButton" type="Button" parent="UI/ControlPanel/VBoxContainer" unique_id=1650704130]
+layout_mode = 2
+text = "Increase Thickness"
+
+[node name="DecreaseButton" type="Button" parent="UI/ControlPanel/VBoxContainer" unique_id=102880471]
+layout_mode = 2
+text = "Decrease Thickness"
+
+[node name="ResultLabel" type="Label" parent="UI/ControlPanel/VBoxContainer" unique_id=2033489744]
+layout_mode = 2
+text = "Ready"
+
+[node name="ResetGraphButton" type="Button" parent="UI/ControlPanel/VBoxContainer" unique_id=1248419224]
+layout_mode = 2
+text = "Reset Graph"
+
+[node name="BackButton" type="Button" parent="UI/ControlPanel/VBoxContainer" unique_id=1748880278]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="BetaGraph" parent="." unique_id=58167905 instance=ExtResource("2_kwu1u")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -250.0
+offset_right = 350.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="DetectorTimer" type="Timer" parent="." unique_id=1672977037]
+wait_time = 0.2
+one_shot = true

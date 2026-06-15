@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://bxkwftotatdvi"]
+
+[ext_resource type="Script" uid="uid://nsybbjxvl82b" path="res://scripts/radiation_explorer.gd" id="1_3jdr5"]
+
+[node name="RadiationExplorer" type="Control" unique_id=349017803]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3jdr5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1090126521]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -46.5
+offset_right = 72.0
+offset_bottom = 46.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer" unique_id=400968553]
+layout_mode = 2
+text = "Radiation Explorer"
+
+[node name="RadiationOption" type="OptionButton" parent="VBoxContainer" unique_id=863919598]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "Alpha"
+popup/item_0/id = 0
+popup/item_1/text = "Beta"
+popup/item_1/id = 1
+popup/item_2/text = "Gamma"
+popup/item_2/id = 2
+
+[node name="MaterialOption" type="OptionButton" parent="VBoxContainer" unique_id=1498603740]
+layout_mode = 2
+item_count = 4
+popup/item_0/text = "Paper"
+popup/item_0/id = 0
+popup/item_1/text = "Aluminium"
+popup/item_1/id = 1
+popup/item_2/text = "Lead"
+popup/item_2/id = 2
+popup/item_3/text = "Concrete"
+popup/item_3/id = 3
+
+[node name="TestButton" type="Button" parent="VBoxContainer" unique_id=735460327]
+layout_mode = 2
+text = "Test"
+
+[node name="ResultLabel" type="Label" parent="VBoxContainer" unique_id=250605134]
+layout_mode = 2
+text = "Result :"
+
+[node name="BackButton" type="Button" parent="VBoxContainer" unique_id=884392059]
+layout_mode = 2
+text = "Main menu"

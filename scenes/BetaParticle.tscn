@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://snpr1k35hgb7"]
+
+[ext_resource type="Script" uid="uid://bnpc1qy3ybqgs" path="res://scripts/beta_particle.gd" id="1_lvcev"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_215sq"]
+radius = 0.05
+height = 0.1
+
+[node name="BetaParticle" type="Node3D" unique_id=1286812332]
+script = ExtResource("1_lvcev")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1667122920]
+mesh = SubResource("SphereMesh_215sq")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=2015946444]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D" unique_id=1497901724]

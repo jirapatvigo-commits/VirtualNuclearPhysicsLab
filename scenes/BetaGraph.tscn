@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bx1ime8hf7rin"]
+
+[ext_resource type="Script" uid="uid://bfqk87fnk1pyq" path="res://scripts/beta_graph.gd" id="1_fy3b5"]
+
+[node name="BetaGraph" type="Control" unique_id=58167905]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_fy3b5")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1806092245]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
