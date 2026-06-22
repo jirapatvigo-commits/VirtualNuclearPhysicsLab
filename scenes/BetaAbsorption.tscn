@@ -2,17 +2,34 @@
 
 [ext_resource type="Script" uid="uid://btrvj4hdntom7" path="res://scripts/beta_absorption.gd" id="1_5q582"]
 [ext_resource type="PackedScene" uid="uid://bx1ime8hf7rin" path="res://scenes/BetaGraph.tscn" id="2_kwu1u"]
+[ext_resource type="Script" uid="uid://jto6sso2x5kf" path="res://scripts/draggable_body.gd" id="3_sna30"]
+[ext_resource type="PackedScene" uid="uid://c5feukr6yqw5k" path="res://scenes/NotebookPanel.tscn" id="3_ycco1"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_aufrn"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_5q582"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_xodr6"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_kwu1u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sna30"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kwu1u"]
 albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ycco1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d7aw0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xodr6"]
+emission_enabled = true
+emission = Color(0.16297445, 0.7208287, 0.78185844, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_sna30"]
+top_radius = 0.03
+bottom_radius = 0.03
+height = 1.0
 
 [node name="BetaAbsorption" type="Node3D" unique_id=1021498392]
 script = ExtResource("1_5q582")
@@ -32,14 +49,56 @@ transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.70710677, 0.70
 transform = Transform3D(0.5, 0, 0, 0, 0.2, 0, 0, 0, 0.5, 0, 0.5, 2)
 mesh = SubResource("CylinderMesh_5q582")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Source" unique_id=2073398192]
+script = ExtResource("3_sna30")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Source/StaticBody3D" unique_id=1116780428]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Source/StaticBody3D" unique_id=402362504]
+shape = SubResource("BoxShape3D_xodr6")
+
 [node name="Absorber" type="MeshInstance3D" parent="." unique_id=1840789933]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_kwu1u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Absorber" unique_id=444859531]
+script = ExtResource("3_sna30")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Absorber/StaticBody3D" unique_id=1762929290]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Absorber/StaticBody3D" unique_id=36744188]
+shape = SubResource("BoxShape3D_sna30")
+
+[node name="Absorber2" type="MeshInstance3D" parent="." unique_id=378251049]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_kwu1u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Absorber2" unique_id=1365322458]
+script = ExtResource("3_sna30")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Absorber2/StaticBody3D" unique_id=238111150]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Absorber2/StaticBody3D" unique_id=2053916342]
+shape = SubResource("BoxShape3D_sna30")
 
 [node name="Detector" type="MeshInstance3D" parent="." unique_id=2082940773]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0.5, -2)
 material_override = SubResource("StandardMaterial3D_kwu1u")
 mesh = SubResource("BoxMesh_ycco1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Detector" unique_id=2074976499]
+script = ExtResource("3_sna30")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Detector/StaticBody3D" unique_id=1370895080]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detector/StaticBody3D" unique_id=45431257]
+shape = SubResource("BoxShape3D_d7aw0")
+
+[node name="BeamLine" type="Node3D" parent="." unique_id=709984056]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BeamLine" unique_id=2053414178]
+material_override = SubResource("StandardMaterial3D_xodr6")
+mesh = SubResource("CylinderMesh_sna30")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1089775534]
 
@@ -50,13 +109,23 @@ offset_bottom = 40.0
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/ControlPanel" unique_id=1047210809]
 layout_mode = 2
 
-[node name="EmitButton" type="Button" parent="UI/ControlPanel/VBoxContainer" unique_id=1312686142]
+[node name="MaterialOption" type="OptionButton" parent="UI/ControlPanel/VBoxContainer" unique_id=189135743]
 layout_mode = 2
-text = "Emit Beta"
+item_count = 3
+popup/item_0/text = "Plastic"
+popup/item_0/id = 0
+popup/item_1/text = "Aluminum"
+popup/item_1/id = 1
+popup/item_2/text = "Lead"
+popup/item_2/id = 2
 
 [node name="ThicknessLabel" type="Label" parent="UI/ControlPanel/VBoxContainer" unique_id=1860239985]
 layout_mode = 2
 text = "Thickness : 1 mm"
+
+[node name="EmitButton" type="Button" parent="UI/ControlPanel/VBoxContainer" unique_id=1312686142]
+layout_mode = 2
+text = "Emit Beta"
 
 [node name="IncreaseButton" type="Button" parent="UI/ControlPanel/VBoxContainer" unique_id=1650704130]
 layout_mode = 2
@@ -78,7 +147,63 @@ text = "Reset Graph"
 layout_mode = 2
 text = "Main Menu"
 
-[node name="BetaGraph" parent="." unique_id=58167905 instance=ExtResource("2_kwu1u")]
+[node name="DesignModeButton" type="Button" parent="UI/ControlPanel/VBoxContainer" unique_id=1469905244]
+layout_mode = 2
+text = "Design Experiment"
+
+[node name="SaveLayoutButton" type="Button" parent="UI/ControlPanel/VBoxContainer" unique_id=1777996168]
+layout_mode = 2
+text = "Save Layout"
+
+[node name="LoadLayoutButton" type="Button" parent="UI/ControlPanel/VBoxContainer" unique_id=1679688510]
+layout_mode = 2
+text = "Load Layout"
+
+[node name="RadiationOption" type="OptionButton" parent="UI/ControlPanel/VBoxContainer" unique_id=968472078]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "Alpha"
+popup/item_0/id = 0
+popup/item_1/text = "Beta"
+popup/item_1/id = 1
+popup/item_2/text = "Gamme"
+popup/item_2/id = 2
+
+[node name="Absorber1Option" type="OptionButton" parent="UI/ControlPanel/VBoxContainer" unique_id=18481316]
+layout_mode = 2
+item_count = 4
+popup/item_0/text = "Paper"
+popup/item_0/id = 0
+popup/item_1/text = "Plastic"
+popup/item_1/id = 1
+popup/item_2/text = "Aluminum"
+popup/item_2/id = 2
+popup/item_3/text = "Lead"
+popup/item_3/id = 3
+
+[node name="Absorber2Option" type="OptionButton" parent="UI/ControlPanel/VBoxContainer" unique_id=2079512068]
+layout_mode = 2
+item_count = 4
+popup/item_0/text = "Paper"
+popup/item_0/id = 0
+popup/item_1/text = "Plastic"
+popup/item_1/id = 1
+popup/item_2/text = "Aluminum"
+popup/item_2/id = 2
+popup/item_3/text = "Lead"
+popup/item_3/id = 3
+
+[node name="DetectorModeOption" type="OptionButton" parent="UI/ControlPanel/VBoxContainer" unique_id=916914202]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "Count"
+popup/item_0/id = 0
+popup/item_1/text = "Dose"
+popup/item_1/id = 1
+popup/item_2/text = "Energy"
+popup/item_2/id = 2
+
+[node name="BetaGraph" parent="." unique_id=58167905 groups=["beta_graph"] instance=ExtResource("2_kwu1u")]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -91,3 +216,13 @@ size_flags_vertical = 0
 [node name="DetectorTimer" type="Timer" parent="." unique_id=1672977037]
 wait_time = 0.2
 one_shot = true
+
+[node name="NotebookPanel" parent="." unique_id=1315455128 instance=ExtResource("3_ycco1")]
+
+[node name="ExperimentTable" type="Control" parent="." unique_id=1159582596]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

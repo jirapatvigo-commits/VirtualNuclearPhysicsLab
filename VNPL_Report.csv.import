@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bat8plnkwot5y"
+
+[deps]
+
+files=["res://VNPL_Report.Thickness.translation", "res://VNPL_Report.Detected.translation"]
+
+source_file="res://VNPL_Report.csv"
+dest_files=["res://VNPL_Report.Thickness.translation", "res://VNPL_Report.Detected.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

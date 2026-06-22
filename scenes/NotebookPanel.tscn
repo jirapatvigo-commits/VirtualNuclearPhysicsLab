@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://c5feukr6yqw5k"]
+
+[ext_resource type="Script" uid="uid://dkpjglsm22qlr" path="res://scripts/notebook_panel.gd" id="1_4g78o"]
+
+[node name="NotebookPanel" type="Control" unique_id=1315455128]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -110.0
+grow_horizontal = 2
+script = ExtResource("1_4g78o")
+
+[node name="Panel" type="Panel" parent="." unique_id=818923539]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1034766319]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StudentNameEdit" type="LineEdit" parent="Panel/VBoxContainer" unique_id=103151706]
+layout_mode = 2
+placeholder_text = "Student Name"
+
+[node name="StudentIDEdit" type="LineEdit" parent="Panel/VBoxContainer" unique_id=1260337422]
+layout_mode = 2
+placeholder_text = "Student ID"
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer" unique_id=990482078]
+layout_mode = 2
+text = "Lab Notebook"
+
+[node name="NotebookList" type="ItemList" parent="Panel/VBoxContainer" unique_id=1293909065]
+layout_mode = 2
+
+[node name="StatisticsLabel" type="Label" parent="Panel/VBoxContainer" unique_id=1312806325]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "No statistics yet."
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer" unique_id=1450476339]
+layout_mode = 2
+
+[node name="ExportCSVButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer" unique_id=1364875466]
+layout_mode = 2
+text = "Export CSV"
+
+[node name="ExportPDFButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer" unique_id=178816833]
+layout_mode = 2
+text = "Export PDF"
+
+[node name="ExportGraphButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer" unique_id=763667556]
+layout_mode = 2
+text = "Export Graph"
+
+[node name="ClearButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer" unique_id=1428070152]
+layout_mode = 2
+text = "Clear
+"
+
+[node name="GenerateConclusionButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer" unique_id=1276935638]
+layout_mode = 2
+text = "Generate Conclusion"
+
+[node name="AverageButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer" unique_id=654104694]
+layout_mode = 2
+text = "Calculate Average"
+
+[node name="ConclusionEdit" type="TextEdit" parent="Panel/VBoxContainer" unique_id=833383756]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+placeholder_text = "Write your conclusion here..."
+
+[node name="SaveFileDialog" type="FileDialog" parent="." unique_id=2085899410]
+access = 2

@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bv1rp0mkxo1il"
+
+[deps]
+
+files=["res://Test.Thickness.translation", "res://Test.Detected.translation"]
+
+source_file="res://Test.csv"
+dest_files=["res://Test.Thickness.translation", "res://Test.Detected.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true
